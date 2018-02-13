@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="627eacbc-e996-49f9-8a8d-ee1d28c4cf19" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/welcome.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/welcome.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/websystique/springmvc/configuration/HelloWorldConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/com/web/springmvc/configuration/WebConfiguration.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/websystique/springmvc/configuration/HelloWorldInitializer.java" afterPath="$PROJECT_DIR$/src/main/java/com/web/springmvc/configuration/WebdInitializer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/websystique/springmvc/controller/HelloWorldController.java" afterPath="$PROJECT_DIR$/src/main/java/com/web/springmvc/controller/MainController.java" />
-    </list>
+    <list default="true" id="627eacbc-e996-49f9-8a8d-ee1d28c4cf19" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -154,6 +147,11 @@
             <path>
               <item name="AlwaysNearYou" type="b2602c69:ProjectViewProjectNode" />
               <item name="AlwaysNearYou" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AlwaysNearYou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AlwaysNearYou" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AlwaysNearYou" type="b2602c69:ProjectViewProjectNode" />
@@ -679,6 +677,14 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11207">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
