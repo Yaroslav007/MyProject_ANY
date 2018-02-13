@@ -17,3 +17,6 @@ hs_err_pid*
 .idea/libraries/
 .idea/sonarlint/
 target/
+AlwaysNearYou.iml
+.idea/
+.settings/

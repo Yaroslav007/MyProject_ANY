@@ -1,14 +1,13 @@
-package com.web.springmvc.service.impl;
+package com.alwaysnearyou.service.impl;
 
-import com.web.springmvc.service.UserService;
+import com.alwaysnearyou.dao.UserDAO;
+import com.alwaysnearyou.entity.User;
+import com.alwaysnearyou.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.web.springmvc.dao.UserDAO;
-import com.web.springmvc.entity.User;
 
 import java.util.List;
 
-@Service
 public class UserServiceImpl implements UserService{
 
     @Autowired
@@ -26,13 +25,12 @@ public class UserServiceImpl implements UserService{
         return userDAO.findAll();
     }
 
-    @Override
-    public User findOne(int id) {
-        return userDAO.findOne(id);
+    public User getOne(int id) {
+        return userDAO.getOne(id);
     }
 
     @Override
     public void delete(int id) {
-        userDAO.delete(id);
+        userDAO.delete(new User(id));
     }
 }
