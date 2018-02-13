@@ -1,4 +1,4 @@
-package com.web.springmvc.entity;
+package com.alwaysnearyou.entity;
 
 import lombok.*;
 
@@ -10,24 +10,22 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@NoArgsConstructor
 @EqualsAndHashCode
 @ToString
 public class User {
 
+    public User(Integer id) {
+        this.id = id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     private String name;
     private String surname;
-
-    public User(String name, String surname) {
-        }
-//    private String avatar;
-//    private List<User> allFriends;
-
-
+    
+    
 }

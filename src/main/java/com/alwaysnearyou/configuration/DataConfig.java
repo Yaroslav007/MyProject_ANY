@@ -1,4 +1,4 @@
-package com.web.springmvc.configuration;
+package com.alwaysnearyou.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,16 +18,16 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories("com.web.springmvc.dao")
+@EnableJpaRepositories("com.alwaysnearyou.dao")
 public class DataConfig {
 
     @Bean
-    public MultipartResolver multipartResolver(){
+    public MultipartResolver multipartResolver() {
         return new StandardServletMultipartResolver();
     }
 
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setUrl("jdbc:mysql://localhost/AP_ANY");
         dataSource.setUsername("root");
@@ -37,7 +37,7 @@ public class DataConfig {
     }
 
     @Bean
-    public JpaVendorAdapter jpaVendorAdapter(){
+    public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setShowSql(true);
         vendorAdapter.setDatabase(Database.MYSQL);
@@ -45,20 +45,20 @@ public class DataConfig {
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(){
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource());
         factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
 
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto","update");
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");
 
         factoryBean.setJpaProperties(properties);
         return factoryBean;
     }
 
     @Bean
-    public JpaTransactionManager transactionManager(){
+    public JpaTransactionManager transactionManager() {
         return new JpaTransactionManager();
     }
 }
