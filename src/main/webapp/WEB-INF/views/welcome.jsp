@@ -8,5 +8,11 @@
 </head>
 <body>
 	Greeting : ${greeting}
+	<form action="/save" method="post">
+	    <input type="" name="name" placeholder="name">
+	    <input type="" name="age" placeholder="age">
+	    <input type="submit">
+	</form>
+
 </body>
 </html>
