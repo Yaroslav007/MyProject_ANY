@@ -16,19 +16,36 @@ import javax.persistence.Id;
 @ToString
 public class User {
 
-    public User(Integer id) {
-        this.id = id;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
     private String surname;
+    private String birthday;
+    private String password;
+    private String gender;
+    private String country;
+    private String address;
+    private String email;
+    private int phone;
+    private String avatar;
 
-    public User(String name, String surname) {
+
+    public User(String name, String surname,
+                String birthday, String passward,
+                String gender, String country,
+                String adress, String email,
+                int phone, String avatar) {
         this.name = name;
         this.surname = surname;
+        this.birthday = birthday;
+        this.password = passward;
+        this.gender = gender;
+        this.country = country;
+        this.address = adress;
+        this.email = email;
+        this.phone = phone;
+        this.avatar = avatar;
     }
 }
