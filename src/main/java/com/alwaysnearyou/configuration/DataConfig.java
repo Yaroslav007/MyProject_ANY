@@ -19,7 +19,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories("com.alwaysnearyou.dao")
-public class DataConfig {
+public class  DataConfig {
 
     @Bean
     public MultipartResolver multipartResolver() {
@@ -29,7 +29,7 @@ public class DataConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost/AP_ANY");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/AP_ANY");
         dataSource.setUsername("root");
         dataSource.setPassword("1534267");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
@@ -48,6 +48,7 @@ public class DataConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource());
+        factoryBean.setPackagesToScan("com.alwaysnearyou.entity");
         factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
 
         Properties properties = new Properties();
