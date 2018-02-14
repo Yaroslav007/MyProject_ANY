@@ -29,5 +29,11 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry.addResourceHandler("/css/**")
                 .addResourceLocations("/WEB-INF/static/style/");
+
+//        registry.addResourceHandler("/js/**").addResourceLocations("/js/**");
+
+//        registry.addResourceHandler("/image/**").addResourceLocations("/img/**");
+        registry.addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/");
     }
 }
