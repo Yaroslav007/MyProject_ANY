@@ -13,20 +13,15 @@ public class WebdInitializer implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext container) throws ServletException {
-        // Create the 'root' Spring application context
-        AnnotationConfigWebApplicationContext rootContext =
-                new AnnotationConfigWebApplicationContext();
+
+        AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
         rootContext.register(WebConfiguration.class);
         rootContext.setServletContext(container);
-        // Manage the lifecycle of the root application context
         container.addListener(new ContextLoaderListener(rootContext));
 
-        // Create the dispatcher servlet's Spring application context
-        AnnotationConfigWebApplicationContext dispatcherContext =
-                new AnnotationConfigWebApplicationContext();
+        AnnotationConfigWebApplicationContext dispatcherContext = new AnnotationConfigWebApplicationContext();
         dispatcherContext.register(WebConfiguration.class);
 
-        // Register and map the dispatcher servlet
         ServletRegistration.Dynamic dispatcher =
                 container.addServlet("dispatcher", new DispatcherServlet(dispatcherContext));
         dispatcher.setLoadOnStartup(1);
