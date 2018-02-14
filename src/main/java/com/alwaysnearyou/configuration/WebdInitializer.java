@@ -1,5 +1,6 @@
 package com.alwaysnearyou.configuration;
 
+import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
@@ -26,6 +27,8 @@ public class WebdInitializer implements WebApplicationInitializer {
                 container.addServlet("dispatcher", new DispatcherServlet(dispatcherContext));
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");
+
+        dispatcher.setMultipartConfig(new MultipartConfigElement("", 1000000,1000000,1000000));
     }
 
 }

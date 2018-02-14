@@ -23,10 +23,10 @@ public class User {
     private String name;
     private String surname;
     private String birthday;
-    private String passward;
+    private String password;
     private String gender;
     private String country;
-    private String adress;
+    private String address;
     private String email;
     private int phone;
     private String avatar;
@@ -40,10 +40,10 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.birthday = birthday;
-        this.passward = passward;
+        this.password = passward;
         this.gender = gender;
         this.country = country;
-        this.adress = adress;
+        this.address = adress;
         this.email = email;
         this.phone = phone;
         this.avatar = avatar;

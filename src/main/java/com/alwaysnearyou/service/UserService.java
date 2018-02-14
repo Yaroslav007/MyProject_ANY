@@ -1,7 +1,6 @@
 package com.alwaysnearyou.service;
 
 import com.alwaysnearyou.entity.User;
-import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface UserService {
@@ -12,5 +11,5 @@ public interface UserService {
 
     User getOne(int id);
 
-    void delete(int id);
+    void delete(User user);
 }
