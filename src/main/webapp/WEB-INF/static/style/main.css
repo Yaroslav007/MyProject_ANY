@@ -139,7 +139,7 @@ li {
 }
 
 .m-left-20{
-    margin-left: -5%;
+    margin-left: 3%;
 }
 
 #User-info{
@@ -254,7 +254,6 @@ font-size: 15px;
 .background-foto {
    background-image: url("/resources/image/sety.jpg");
    height: 100%;
-   margin-top: -7px;
    width: 100%
 }
 .background-foto-newAc{

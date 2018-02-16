@@ -2,6 +2,7 @@ package com.alwaysnearyou.controller;
 
 
 import com.alwaysnearyou.entity.User;
+import com.alwaysnearyou.service.MailService;
 import com.alwaysnearyou.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,10 +21,14 @@ public class MainController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private MailService mailService;
+
     @RequestMapping(method = RequestMethod.GET)
     public String sayHello(ModelMap model) {
-        model.addAttribute("greeting", "Hello World from Spring 4 MVC");
+//        model.addAttribute("greeting", "Hello World from Spring 4 MVC");
         return "createNewAccount";
+//        return "createNewAccount";
     }
 
     @RequestMapping(value= "/save", method = RequestMethod.POST)
@@ -53,6 +58,7 @@ public class MainController {
         user.setAvatar("\\userAvatar\\" + avatar.getOriginalFilename());
 
         userService.save(user);
+        mailService.send(user);
         return "redirect:/";
     }
 

@@ -29,17 +29,17 @@
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="Name">Surname</label>
+      <label class="col-md-4 control-label">Surname</label>
       <div class="col-md-5">
-      <input id="Name" name="surname" type="text" placeholder="surname" class="form-control input-md" required="">
+      <input i name="surname" type="text" placeholder="surname" class="form-control input-md" required="">
 
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-md-4 control-label" for="Name">Birthday</label>
+      <label class="col-md-4 control-label"">Birthday</label>
       <div class="col-md-5">
-      <input id="Name" name="birthday" type="text" placeholder="dd:mm:year" class="form-control input-md" required="">
+      <input name="birthday" type="text" placeholder="yyyy-mm-dd" class="form-control input-md" required="">
 
       </div>
     </div>
@@ -48,7 +48,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="passwordinput">Password</label>
       <div class="col-md-5">
-        <input id="passwordinput" name="password" type="password" placeholder="max 16 characters" class="form-control input-md" required="">
+        <input id="passwordinput" name="password" type="password" placeholder="your password" class="form-control input-md" required="">
 
       </div>
     </div>
@@ -57,19 +57,22 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="confirm_password">Confirm Password</label>
       <div class="col-md-5">
-        <input id="confirm_password" name="confirm_password" type="password" placeholder="Re-type password" class="form-control input-md" required="">
-
+        <input id="confirm_password" name="confirm_password"
+                        type="password" placeholder="Re-type password" class="form-control input-md" required=""
+                        onkeyup="checkPass(); return false;">
+         <span id="confirmMessage" class="confirmMessage"></span>
       </div>
     </div>
 
-    <!-- Multiple Radios (inline) -->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="Name">Gender</label>
-      <div class="col-md-5">
-      <input id="Name" name="gender" type="text" placeholder="man or woman" class="form-control input-md" required="">
-
-      </div>
-    </div>
+   <div class="form-group">
+     <label class="col-md-4 control-label" for="gender">Gender</label>
+     <div class="col-md-5">
+       <select id="gender" name="gender"  type="text" class="form-control">
+         <option value="man">man</option>
+         <option value="woman">woman</option>
+       </select>
+     </div>
+   </div>
 
     <!-- Textarea -->
     <div class="form-group">
@@ -81,17 +84,17 @@
 
     <!-- Select Basic -->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="Name">Country</label>
+      <label class="col-md-4 control-label">Country</label>
       <div class="col-md-5">
-      <input id="Name" name="country" type="text" placeholder="country" class="form-control input-md" required="">
+      <input name="country" type="text" placeholder="country" class="form-control input-md" required="">
 
       </div>
     </div>
     <!-- Text input-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="mobilenumber">Mobile Number</label>
+      <label class="col-md-4 control-label">Mobile Number</label>
       <div class="col-md-5">
-      <input id="mobilenumber" name="phone" type="text" placeholder="Mobile Number" class="form-control input-md" required="">
+      <input id="phone" name="phone" type="m" placeholder="Mobile Number" class="form-control input-md" required="">
 
       </div>
     </div>
@@ -100,7 +103,9 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="emailId">Email</label>
       <div class="col-md-6">
-      <input id="emailId" name="email" type="text" placeholder="user@domain.com" class="form-control input-md" required="">
+      <input id="emailId" name="email" type="text" placeholder="user@domain.com"
+
+      class="form-control input-md" required="">
 
       </div>
     </div>
@@ -119,7 +124,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="submit"></label>
       <div class="col-md-4">
-        <button id="submit" name="submit" class="btn btn-success" value="save">Submit</button>
+        <button id="submit" name="submit"  class="btn btn-success" value="save" >Submit</button>
       </div>
     </div>
 
@@ -129,5 +134,7 @@
 </div>
 
  </div>
+
+ <script type="text/javascript" src="/resources/js/script.js"></script>
 </body>
 </html>
