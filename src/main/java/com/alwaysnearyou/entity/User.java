@@ -30,6 +30,8 @@ public class User {
     private String email;
     private int phone;
     private String avatar;
+    private boolean active = false;
+    private int code;
 
 
     public User(String name, String surname,

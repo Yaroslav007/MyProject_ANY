@@ -22,8 +22,8 @@
         <div class=" w-25 left-box  float-l">
             <div id="User-info">
               	<p class="text-align">My Account</p>
-				<img class="user-foto radius" src="/resources/image/3.png"/> <-- <img src="${user.avatar}" alt="">-->
-				<p id="user_name_surname">Name Surname</p>
+				<img class="user-foto radius"  src="${user.avatar}" alt="">
+				<p id="user_name_surname">${user.name} ${user.surname}</p>
             </div>
             <div id="all-users">
                <p class="text-align">All users</p>

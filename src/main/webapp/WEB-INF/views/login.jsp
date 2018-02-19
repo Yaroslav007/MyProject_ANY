@@ -44,7 +44,7 @@
 						<div class="form-group divider">
 							<hr class="left"><small>New to site?</small><hr class="right">
 						</div>
-						<p class="form-group"><a href="#" class="btn btn-info btn-block">Create an account</a></p>
+						<p class="form-group"><a href="new" class="btn btn-info btn-block">Create an account</a></p>
 						<p class="form-group text-align-center">By clicking <a href="#">"Create ub account"</a> , you agree to our terms
 						of service and privacy <a href="#">privacy policy</a>.We’ll occasionally send you account related emails.</p>
 					</form>
