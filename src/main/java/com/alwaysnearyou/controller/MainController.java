@@ -2,14 +2,16 @@ package com.alwaysnearyou.controller;
 
 
 import com.alwaysnearyou.entity.User;
-import com.alwaysnearyou.service.MailService;
 import com.alwaysnearyou.service.UserService;
+import com.alwaysnearyou.service.impl.MailServiceImpl;
+import com.alwaysnearyou.utils.RandomCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 
@@ -22,13 +24,16 @@ public class MainController {
     private UserService userService;
 
     @Autowired
-    private MailService mailService;
+    private MailServiceImpl mailService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String sayHello(ModelMap model) {
-//        model.addAttribute("greeting", "Hello World from Spring 4 MVC");
+    @RequestMapping(value= "/", method = RequestMethod.GET)
+    public String signIn(ModelMap model) {
+        return "login";
+    }
+
+    @RequestMapping(value= "/new", method = RequestMethod.GET)
+    public String getCreateAccountPage(ModelMap model) {
         return "createNewAccount";
-//        return "createNewAccount";
     }
 
     @RequestMapping(value= "/save", method = RequestMethod.POST)
@@ -36,7 +41,7 @@ public class MainController {
                        @RequestParam String birthday, @RequestParam String password,
                        @RequestParam String gender, @RequestParam String country,
                        @RequestParam String address, @RequestParam String email,
-                       @RequestParam int phone, @RequestParam MultipartFile avatar){
+                       @RequestParam int phone, @RequestParam MultipartFile avatar, HttpSession session){
 
         String path = System.getProperty("user.home")+ File.separator +"Avatars\\";
         try {
@@ -44,6 +49,8 @@ public class MainController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        RandomCode randomCode = new RandomCode();
+        int code = randomCode.randomNumber();
 
         User user = new User();
         user.setName(name);
@@ -56,10 +63,28 @@ public class MainController {
         user.setEmail(email);
         user.setPhone(phone);
         user.setAvatar("\\userAvatar\\" + avatar.getOriginalFilename());
+        user.setCode(code);
+
 
         userService.save(user);
-        mailService.send(user);
-        return "redirect:/";
+        mailService.send(email, code);
+        session.setAttribute("user",user);
+        return "confirmPage";
     }
+
+    @RequestMapping(value= "/confirm", method = RequestMethod.POST)
+    public String confirm(@RequestParam int confirm, HttpSession session){
+        User user = (User) session.getAttribute("user");
+        int userCode = user.getCode();
+        if (confirm == userCode){
+            user.setActive(true);
+            userService.save(user);
+            return "mainPage";
+        } else {
+            System.out.println("ERRRRROOOOOORR");
+            return null;
+        }
+    }
+
 
 }

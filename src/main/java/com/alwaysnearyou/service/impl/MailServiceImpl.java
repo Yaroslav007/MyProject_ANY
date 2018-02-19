@@ -1,7 +1,5 @@
 package com.alwaysnearyou.service.impl;
 
-import com.alwaysnearyou.entity.User;
-import com.alwaysnearyou.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -14,7 +12,8 @@ import javax.mail.internet.MimeMessage;
 
 @Service
 @PropertySource("classpath:email.properties")
-public class MailServiceImpl implements MailService{
+public class MailServiceImpl{
+
 
     @Autowired
     private JavaMailSender javaMailSender;
@@ -22,17 +21,18 @@ public class MailServiceImpl implements MailService{
     @Autowired
     private Environment env;
 
-    @Override
-    public void send(User user) {
+    public void send(String email, int code) {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
         try {
             helper.setFrom(env.getProperty("email.username"));
-            helper.setText("Hello," + user.getName() + "!", true);
-            helper.setTo(user.getEmail());
+            helper.setText("Hello, your code: " + code + " !" + " If you did not register on our site, ignore this message, please!!!", true);
+            helper.setTo(email);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
         javaMailSender.send(mimeMessage);
     }
+
+
 }
