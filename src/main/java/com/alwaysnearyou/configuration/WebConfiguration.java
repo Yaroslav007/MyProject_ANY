@@ -63,17 +63,10 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry.addResourceHandler("/css/**")
                 .addResourceLocations("/WEB-INF/static/style/");
-
-//        registry.addResourceHandler("/js/**")
-//                .addResourceLocations("/WEB-INF/js/");
-
-//        registry.addResourceHandler("/image/**").addResourceLocations("/img/**");
         registry.addResourceHandler("/resources/**")
                 .addResourceLocations("/resources/");
-
         registry.addResourceHandler("/userAvatar/**")
                 .addResourceLocations("file:"+System.getProperty("user.home")+ File.separator +"Avatars\\");
-
         registry.addResourceHandler("/js/**")
                 .addResourceLocations("/WEB-INF/static/js/");
 
