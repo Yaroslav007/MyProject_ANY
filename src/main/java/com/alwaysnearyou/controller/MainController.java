@@ -86,5 +86,12 @@ public class MainController {
         }
     }
 
+    @RequestMapping(value= "/logIn", method = RequestMethod.POST)
+    public String logIn( @RequestParam("signinEmail") String email,
+                         @RequestParam("signinPassword") String password, HttpSession session){
+        User user = userService.findUserByEmailAndPassword(email, password);
+        session.setAttribute("user",user);
+        return "mainPage";
+    }
 
 }

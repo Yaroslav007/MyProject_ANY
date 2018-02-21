@@ -11,5 +11,8 @@ import java.util.List;
 
 @Repository
 public interface UserDAO extends JpaRepository<User, Integer>{
+
+    @Query("select u from User u where u.email like %?1 and u.password like %?2")
+    User findUserByEmailAndPassword(String email, String password);
         
 }
