@@ -12,4 +12,7 @@ public interface UserService {
     User getOne(int id);
 
     void delete(User user);
+
+    User findUserByEmailAndPassword(String email, String password);
+
 }

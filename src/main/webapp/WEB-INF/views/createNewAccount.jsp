@@ -13,7 +13,7 @@
     <div class="background-foto-newAc">
         <div class="container">
 	        <div class="row">
-	            <form action="/save" class="form-horizontal" method="post" enctype="multipart/form-data">
+	            <form id="myForm" action="/save" class="form-horizontal" method="post" enctype="multipart/form-data">
                     <fieldset>
                         <!-- Form Name -->
                         <legend><strong><h2>Registration</h2></strong></legend>
@@ -21,7 +21,7 @@
                         <div class="form-group">
                           <label class="col-md-4 control-label" for="Name">Name</label>
                           <div class="col-md-5">
-                            <input id="Name" name="name" type="text" placeholder="name" class="form-control input-md" required="">
+                            <input id="name" name="name" type="text" placeholder="name" class="form-control input-md" required="">
                           </div>
                         </div>
                         <div class="form-group">
@@ -31,9 +31,10 @@
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="col-md-4 control-label">Birthday</label>
+                          <label class="col-md-4 control-label" for="birthday">Birthday</label>
                           <div class="col-md-5">
-                            <input name="birthday" type="text" placeholder="yyyy-mm-dd" class="form-control input-md" required="">
+                            <input id="birthday" name="birthday" type="text"
+                            placeholder="yyyy-mm-dd" class="form-control input-md" required="" onkeyup="checkData()">
                           </div>
                         </div>
                         <!-- Password input-->
@@ -49,7 +50,7 @@
                           <div class="col-md-5">
                             <input id="confirm_password" name="confirm_password"
                                             type="password" placeholder="Re-type password" class="form-control input-md" required=""
-                                            onkeyup="checkPass(); return false;">
+                                            onkeyup="checkPass()">
                              <span id="confirmMessage" class="confirmMessage"></span>
                           </div>
                         </div>
@@ -80,14 +81,15 @@
                         <div class="form-group">
                           <label class="col-md-4 control-label">Mobile Number</label>
                           <div class="col-md-5">
-                            <input id="phone" name="phone" type="m" placeholder="Mobile Number" class="form-control input-md" required="">
+                            <input id="phone" name="phone" type="text" placeholder="+38-XXX-XXX-XXXX"
+                             onkeyup="phonenumber()" class="form-control input-md" required="">
                           </div>
                         </div>
                         <!-- Text input-->
                         <div class="form-group">
                           <label class="col-md-4 control-label" for="emailId">Email</label>
-                          <div class="col-md-6">
-                            <input id="emailId" name="email" type="text" placeholder="user@domain.com" class="form-control input-md" required="">
+                          <div class="col-md-5">
+                            <input id="email" name="email" type="text"  onkeyup="checkEmail()" placeholder="user@domain.com" class="form-control input-md" required="">
                           </div>
                         </div>
                         <div class="form-group">
@@ -108,6 +110,7 @@
 	        </div>
         </div>
     </div>
-    <script type="text/javascript" src="/resources/js/script.js"></script>
+
+    <script type="text/javascript" src="/js/script.js"></script>
 </body>
 </html>

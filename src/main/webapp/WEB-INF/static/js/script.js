@@ -10,12 +10,12 @@ function checkPass(){
     var goodColor = "#66cc66";
     var badColor = "#ff6666";
 
-    //Compare the values in the password field 
+    //Compare the values in the password field
     //and the confirmation field
     if(pass1.value == pass2.value){
-        //The passwords match. 
+        //The passwords match.
         //Set the color to the good color and inform
-        //the user that they have entered the correct password 
+        //the user that they have entered the correct password
         pass2.style.backgroundColor = goodColor;
         message.style.color = goodColor;
         message.innerHTML = "Passwords Match!"
@@ -30,38 +30,42 @@ function checkPass(){
 }
 
 function checkEmail() {
-
     var email = document.getElementById('email');
     var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
     if (!filter.test(email.value)) {
-    alert('Please provide a valid email address');
-    email.focus;
-    return false;
- }
+        email.focus;
+        email.style.backgroundColor = "#ff6666";
+        return false;
+    }else{
+        email.style.backgroundColor = "#66cc66";
+        return true;
+    }
+}
+
+
+function phonenumber() {
+  var phone = document.getElementById('phone');
+  var filter = /^\+?(([0-9]{2})[-. ])?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  if(!filter.test(phone.value)) {
+        phone.style.backgroundColor = "#ff6666";
+        return false;
+  }else {
+        phone.style.backgroundColor = "#66cc66";
+        return true;
+  }
 }
 
 function checkData() {
-
     var birthday = document.getElementById('birthday');
-    var filter = ([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]));
-
+    var filter = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/;
     if (!filter.test(birthday.value)) {
-    alert('Please provide a valid data');
-    birthday.focus;
-    return false;
- }
-}
-
-
-
-
-function numberValidate(){
-    var num=document.myform.num.value;
-    if (isNaN(num)){
-      document.getElementById("phone").innerHTML="Enter Numeric value only";
-      return false;
+        birthday.focus;
+        birthday.style.backgroundColor = "#ff6666";
+        return false;
     }else{
-      return true;
-      }
+         birthday.style.backgroundColor = "#66cc66";
+         return true;
+    }
 }
+
+
