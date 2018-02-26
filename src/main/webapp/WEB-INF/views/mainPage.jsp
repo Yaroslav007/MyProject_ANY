@@ -15,9 +15,9 @@
                <div>
                    <img class="foto-size-chat radius" src="/resources/image/3.png"/>
                    <p id="m-top-8" >Be always on connection with the "Always near you" application!</p>
-       		      <form class="form-wrapper" action="/search">
-       				<input type="submit" value="go" id="search-submit">
-       				<input type="text" id="search" placeholder="Search for..." required="">
+       		       <form class="form-wrapper" action="/search">
+                        <input type="submit" value="go" id="search-submit">
+                        <input type="text" id="search" name="search" placeholder="Search for..." required="">
        			   </form>
        			</div>
        	</div>
@@ -36,7 +36,7 @@
                         <c:forEach items="${friends}" var="us">
                            <li><img class="friend-foto radius"  src="${user.avatar}" alt="">${us.name} ${us.surname}</li>
                         </c:forEach>
-                    </ul>
+                   </ul>
                 </div>
             </div>
 
