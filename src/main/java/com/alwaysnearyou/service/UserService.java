@@ -15,4 +15,7 @@ public interface UserService {
 
     User findUserByEmailAndPassword(String email, String password);
 
+    List<User> findUserByNameAndSurname(String name, String surname);
+
+   List<User> findAllFriends(int userId);
 }
