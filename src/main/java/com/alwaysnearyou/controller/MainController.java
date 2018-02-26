@@ -7,6 +7,7 @@ import com.alwaysnearyou.service.impl.MailServiceImpl;
 import com.alwaysnearyou.utils.RandomCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -79,7 +80,7 @@ public class MainController {
         if (confirm == userCode){
             user.setActive(true);
             userService.save(user);
-            return "mainPage";
+            return "redirect:/mainPage";
         } else {
             System.out.println("ERRRRROOOOOORR");
             return null;
@@ -92,10 +93,27 @@ public class MainController {
         User user = userService.findUserByEmailAndPassword(email, password);
         if(!(user == null)) {
             session.setAttribute("user", user);
-            return "mainPage";
+            return "redirect:/mainPage";
         }else{
             return "errorSingnIn";
         }
     }
 
+    @RequestMapping(value= "/mainPage", method = RequestMethod.GET)
+    public String mainPage(Model model,HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        //TODO: redirect to login page
+        int userId = user.getId();
+        model.addAttribute("friends", userService.findAllFriends(userId));
+        return "mainPage";
+    }
+
+    @RequestMapping(value= "/search", method = RequestMethod.GET)
+    public String search(@RequestParam String search, Model model){
+        String[] parts = search.split(" ");
+        String str1 = parts[0];
+        String str2 = parts[1];
+        model.addAttribute("foundUsers", userService.findUserByNameAndSurname(str1,str2));
+        return "searchPage";
+    }
 }

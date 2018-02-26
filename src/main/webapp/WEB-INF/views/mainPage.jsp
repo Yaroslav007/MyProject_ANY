@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,23 +10,33 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body id="body_id">
-	<div>
+
         <div class="header">
-            <div class="text-align">
-                <img class="foto-size-chat radius" src="/resources/image/3.png"/>
-                <span id="m-top-8" >Be always in connection with the "Always near you" application!</span>
-            </div>
-        </div>
+               <div>
+                   <img class="foto-size-chat radius" src="/resources/image/3.png"/>
+                   <p id="m-top-8" >Be always on connection with the "Always near you" application!</p>
+       		      <form class="form-wrapper" action="/search">
+       				<input type="submit" value="go" id="search-submit">
+       				<input type="text" id="search" placeholder="Search for..." required="">
+       			   </form>
+       			</div>
+       	</div>
         <div>
             <div class=" w-25 left-box  float-l">
                 <div id="User-info">
                     <p class="text-align">My Account</p>
-                    <img class="user-foto radius"  src="${user.avatar}" alt="">
+                    <img class="user-foto radius-50"  src="${user.avatar}" alt="">
                     <p id="user_name_surname">${user.name} ${user.surname}</p>
                 </div>
-                <div id="all-users">
-                   <p class="text-align">All users</p>
 
+                <div class="clearfix">
+                   <p class="text-align m-top-40 border-top">All users  - Friends online</p>
+                   <ul id="userlist"> <!-- Built by JS -->
+
+                        <c:forEach items="${friends}" var="us">
+                           <li><img class="friend-foto radius"  src="${user.avatar}" alt="">${us.name} ${us.surname}</li>
+                        </c:forEach>
+                    </ul>
                 </div>
             </div>
 
@@ -56,11 +68,6 @@
                     <span class="margin">Delete all message from room</span>
                     <button id="videoCall" class="button2"> Delete</button>
                 </div>
-
-                <div class="clearfix">
-                    <p class="text-align m-top-40 border-top">Friends online</p>
-                    <ul id="userlist"> <!-- Built by JS --> </ul>
-                </div>
             </div>
        </div>
         <div class="pidval text-align clearfix">
@@ -68,7 +75,7 @@
             <br>
             <p> The project was created with support by Okten Web University</p>
         </div>
-	</div>
+
 
 </body>
 </html>

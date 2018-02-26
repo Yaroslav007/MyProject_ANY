@@ -3,8 +3,10 @@ package com.alwaysnearyou.service.impl;
 import com.alwaysnearyou.dao.UserDAO;
 import com.alwaysnearyou.entity.User;
 import com.alwaysnearyou.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -41,5 +43,17 @@ public class UserServiceImpl implements UserService{
         return userDAO.findUserByEmailAndPassword(email,password);
     }
 
+    @Override
+    public List<User> findUserByNameAndSurname(String name, String surname) {
+        List<User> listUsers = userDAO.findUserByNameAndSurname(name, surname);
+        return listUsers;
+    }
 
+    @Transactional
+    @Override
+    public List<User> findAllFriends(int userId) {
+        User user = userDAO.findUserById(userId);
+        System.out.println("Found friends" + user.getFriends());
+        return  user.getFriends();
+    }
 }

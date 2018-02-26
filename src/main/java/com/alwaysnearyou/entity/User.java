@@ -2,10 +2,8 @@ package com.alwaysnearyou.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -13,7 +11,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-@ToString
+@ToString(exclude = "friends")
 public class User {
 
     @Id
@@ -33,21 +31,34 @@ public class User {
     private boolean active = false;
     private int code;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name="friends",
+            joinColumns=@JoinColumn(name="user_id"),
+            inverseJoinColumns=@JoinColumn(name="friend_id"))
+    private List<User> friends;
 
-    public User(String name, String surname,
-                String birthday, String passward,
-                String gender, String country,
-                String adress, String email,
-                int phone, String avatar) {
-        this.name = name;
-        this.surname = surname;
-        this.birthday = birthday;
-        this.password = passward;
-        this.gender = gender;
-        this.country = country;
-        this.address = adress;
-        this.email = email;
-        this.phone = phone;
-        this.avatar = avatar;
-    }
+//    @ManyToMany
+//    @JoinTable(name="friends",
+//            joinColumns=@JoinColumn(name="friend_id"),
+//            inverseJoinColumns=@JoinColumn(name="user_id")
+//    )
+//    private List<User> friendOf;
+
+//    public User(String name, String surname,
+//                String birthday, String passward,
+//                String gender, String country,
+//                String adress, String email,
+//                int phone, String avatar) {
+//        this.name = name;
+//        this.surname = surname;
+//        this.birthday = birthday;
+//        this.password = passward;
+//        this.gender = gender;
+//        this.country = country;
+//        this.address = adress;
+//        this.email = email;
+//        this.phone = phone;
+//        this.avatar = avatar;
+//    }
+
 }
