@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body id="body_color">
-    <div class="header">
+    <div id="serchform" class="header">
         <div>
             <img class="foto-size-chat radius" src="/resources/image/3.png"/>
             <p id="m-top-8" >Be always in connection with the "Always near you" application!</p>
-
-			<form class="form-wrapper">
-				<input type="submit" value="go" id="search-submit">
-				<input type="text" id="search" placeholder="Search for..." required="">
-			</form>
+                <form class="form-wrapper" action="/search">
+                    <input type="submit" value="go" id="search-submit">
+                    <input id="search" name="search" type="text" onkeyup="searchValidator()"
+                    placeholder="${user.name} ${user.surname}" required="">
+                </form>
 		</div>
     </div>
 
@@ -26,26 +26,31 @@
 	 </div>
 	 <div class="w-50 float-l">
         <div class="clearfix people-found bg-color-foundPeople">
-            <img class="people-foto " src="Images/people2.jpg"/>
+            <img class="people-foto " src="/resources/image/people2.jpg"/>
             <p id="m-top-8" > Found people</p>
         </div>
 
         <ul class="clearfix" id="foundUs"> <!-- Built by JS -->
 
-           <c:forEach items="${foundUsers}" var="us">
-               <li class="clearfix"><img class="found-user-foto float-l"  src="${user.avatar}" alt=""><br>
-                    <div class="float-l">
-                        <p id="mtop-42">${user.name}, ${user.surname} </p>
-                        <p>${user.address}, ${user.country}</p>
-                    </div>
-                    <button id="addToFriend" class="hoverbutton" style="vertical-align:middle"><span>Add to Friend </span></button>
-                    <p class="p-border"></p>
-               </li>
+           <c:forEach items="${foundUsers}" var="fu">
+               <form action="/sendArequestToAFriend">
+                   <li class="clearfix"><img class="found-user-foto float-l"  src="${fu.avatar}" alt=""><br>
+                        <div class="float-l">
+                            <p id="mtop-42">${fu.name}, ${fu.surname} </p>
+                            <p>${fu.address}, ${fu.country}</p>
+                              <input id="fu-id" type="hidden" name="fu-id" value="${fu.id}">
+                        </div>
+                        <button id="addToFriend" class="hoverbutton" value="sendArequestToAFriend"
+                            tyle="vertical-align:middle"><span>Add to Friend </span></button>
+                        <p class="p-border"></p>
+                   </li>
+               </form>
             </c:forEach>
         </ul>
 	  </div>
 	 <div class="w-25 float-l bg-grey">
 	 </div>
+	  <script type="text/javascript" src="/js/search.js"></script>
 </body>
 </html>
 

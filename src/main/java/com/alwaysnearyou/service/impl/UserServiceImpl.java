@@ -3,7 +3,6 @@ package com.alwaysnearyou.service.impl;
 import com.alwaysnearyou.dao.UserDAO;
 import com.alwaysnearyou.entity.User;
 import com.alwaysnearyou.service.UserService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,11 +48,21 @@ public class UserServiceImpl implements UserService{
         return listUsers;
     }
 
-    @Transactional
     @Override
     public List<User> findAllFriends(int userId) {
+        return getUserWithFriends(userId).getFriends();
+    }
+    @Override
+    public List<User> findAllfriendsOff(int userId){
+        return getUserWithFriends(userId).getFriendOf();
+    }
+
+    @Transactional
+    @Override
+    public User getUserWithFriends(int userId) {
         User user = userDAO.findUserById(userId);
         System.out.println("Found friends" + user.getFriends());
-        return  user.getFriends();
+        System.out.println("Found friendof" + user.getFriendOf());
+        return  user;
     }
 }
