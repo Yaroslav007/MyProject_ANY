@@ -1,11 +1,11 @@
+.pd-bottom-40{
+       padding-bottom: 40px;
+}
 .bg-grey{
    background-color:#969aa0;;
 }
 .bg-color-foundPeople{
     background-color: #2e83b178;
-}
-* {
-    box-sizing: border-box;
 }
 
 .body-box {
@@ -270,7 +270,8 @@ margin-right: 4%;
     float: right;
     width: 12%;
     margin-top: 16px;
-    margin-left: 10%
+    margin-left: 10%;
+
 }
 #search-submit{
    float: right;

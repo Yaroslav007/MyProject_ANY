@@ -8,20 +8,20 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body id="body">
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="error-template">
-                <h1> Oops!</h1>
-                <h2>User Not Found</h2>
-                <div class="error-details">
-                    Sorry, the user with such data does not exist!
-                </div>
-                <div class="error-actions">
-                    <a href="/" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>Take me previous page </a>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="error-template">
+                    <h1> Oops!</h1>
+                    <h2>User Not Found</h2>
+                    <div class="error-details">
+                        Sorry, the user with such data does not exist!
+                    </div>
+                    <div class="error-actions">
+                        <a href="javascript:history.back()" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span> Go Back </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </body>

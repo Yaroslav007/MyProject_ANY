@@ -1,6 +1,8 @@
 package com.alwaysnearyou.service;
 
 import com.alwaysnearyou.entity.User;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 public interface UserService {
@@ -17,5 +19,9 @@ public interface UserService {
 
     List<User> findUserByNameAndSurname(String name, String surname);
 
-   List<User> findAllFriends(int userId);
+    List<User> findAllFriends(int userId);
+
+    List<User> findAllfriendsOff(int userId);
+
+    User getUserWithFriends(int userId);
 }

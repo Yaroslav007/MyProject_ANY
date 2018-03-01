@@ -17,7 +17,8 @@
                    <p id="m-top-8" >Be always on connection with the "Always near you" application!</p>
        		       <form class="form-wrapper" action="/search">
                         <input type="submit" value="go" id="search-submit">
-                        <input type="text" id="search" name="search" placeholder="Search for..." required="">
+                        <input id="search" name="search" type="text" onkeyup="searchValidator()"
+                        placeholder="${user.name} ${user.surname}" required="">
        			   </form>
        			</div>
        	</div>
@@ -34,8 +35,14 @@
                    <ul id="userlist"> <!-- Built by JS -->
 
                         <c:forEach items="${friends}" var="us">
-                           <li><img class="friend-foto radius"  src="${user.avatar}" alt="">${us.name} ${us.surname}</li>
+                           <li><img class="friend-foto radius"  src="${us.avatar}" alt="">${us.name} ${us.surname}</li>
                         </c:forEach>
+
+                   </ul>
+                   <ul id="userlist">
+                       <c:forEach items="${friendof}" var="usOf">
+                          <li><img class="friend-foto radius"  src="${usOf.avatar}" alt="">${usOf.name} ${usOf.surname}</li>
+                       </c:forEach>
                    </ul>
                 </div>
             </div>
@@ -76,6 +83,6 @@
             <p> The project was created with support by Okten Web University</p>
         </div>
 
-
+        <script type="text/javascript" src="/js/search.js"></script>
 </body>
 </html>
