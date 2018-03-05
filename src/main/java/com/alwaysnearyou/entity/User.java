@@ -39,26 +39,17 @@ public class User {
     @ManyToMany
     @JoinTable(name="friends",
             joinColumns=@JoinColumn(name="friend_id"),
-            inverseJoinColumns=@JoinColumn(name="user_id")
-    )
+            inverseJoinColumns=@JoinColumn(name="user_id"))
     private List<User> friendOf;
 
-//    public User(String name, String surname,
-//                String birthday, String passward,
-//                String gender, String country,
-//                String adress, String email,
-//                int phone, String avatar) {
-//        this.name = name;
-//        this.surname = surname;
-//        this.birthday = birthday;
-//        this.password = passward;
-//        this.gender = gender;
-//        this.country = country;
-//        this.address = adress;
-//        this.email = email;
-//        this.phone = phone;
-//        this.avatar = avatar;
-//    }
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinTable(name = "room_user",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "room_id", referencedColumnName = "id"))
+    private List<Room> rooms;
+
+
+
 
 
     @Override

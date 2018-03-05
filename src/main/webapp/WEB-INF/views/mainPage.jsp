@@ -37,13 +37,21 @@
                         <c:forEach items="${friends}" var="us">
                            <li><img class="friend-foto radius"  src="${us.avatar}" alt="">${us.name} ${us.surname}</li>
                         </c:forEach>
+                        <p><h4 id="requextStr">Request to be friends: </h4></p>
 
-                   </ul>
-                   <ul id="userlist">
                        <c:forEach items="${friendof}" var="usOf">
-                          <li><img class="friend-foto radius"  src="${usOf.avatar}" alt="">${usOf.name} ${usOf.surname}</li>
+                            <form action="/friendRequest">
+                                  <li class="clearfix pddVSborder"><img class="friend-foto radius clearfix"
+                                    src="${usOf.avatar}" alt="">${usOf.name} ${usOf.surname}
+                                    <input id="friendof-id" type="hidden" name="friendof-id" value="${usOf.id}">
+                                  <div class="clearfix marginVSheigth">
+                                    <button class="requestAnsw"  type='submit' name="addToFriend"  value="AddToFriend">Add</button>
+                                    <button class="requestAnsw"  type='submit' name="deleteRequest" value="DeleteRequest">Delete request</button></div>
+                                  </li>
+                            </form>
                        </c:forEach>
-                   </ul>
+
+                    </ul>
                 </div>
             </div>
 

@@ -16,8 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -35,7 +33,7 @@ public class MainController {
     private MailServiceImpl mailService;
 
     @RequestMapping(value= "/", method = RequestMethod.GET)
-    public String signIn(ModelMap model) {
+    public String signIn(ModelMap model, HttpSession session) {
         return "login";
     }
 
@@ -120,6 +118,7 @@ public class MainController {
         User userWithFriends = userService.getUserWithFriends(userId);
         List<User> allFriends = userWithFriends.getFriends();
         List<User> friendOf = userWithFriends.getFriendOf();
+        friendOf.removeAll(allFriends);
         model.addAttribute("user", userWithFriends);
         model.addAttribute("friends", allFriends);
         model.addAttribute("friendof", friendOf);
@@ -139,35 +138,6 @@ public class MainController {
             User userWithFriends = userService.getUserWithFriends(userId);
             List<User> friends = userWithFriends.getFriends();
             foundUser.removeAll(friends);
-
-//            Iterator i = foundUser.iterator();
-//            while(i.hasNext()){
-//                System.out.println("0000000000");
-//                User user1 = (User) i.next();
-//                Iterator j = friends.iterator();
-//                System.out.println("1111");
-//                while(j.hasNext()){
-//                    System.out.println("22222");
-//                    User us2 = (User) j.next();
-//                    System.out.println("3");
-//                    if (user1.getId().equals(us2.getId())){
-//                        System.out.println("not delete");
-//                        foundUser.remove(user1);
-//                        System.out.println("remove");
-//                    }
-//                }
-//            }
-//            for (User u :foundUser) {
-//                System.out.println("1");
-//                for (User u2:friends) {
-//                    System.out.println(2);
-//                    if (!u.getId().equals(u2.getId())){
-//                        newFoundUser.add(u2);
-//                        System.out.println("add!!!!!!!!!!!!!!!!!!");
-//                    }
-//                }
-//            }
-
             if (foundUser.size()==0){
                 return "errorSingnIn";
             }else {
@@ -180,13 +150,34 @@ public class MainController {
         }
     }
 
-
-    @RequestMapping(value= "/sendArequestToAFriend", method = RequestMethod.GET)
-    public String sendArequestToAFriend(@RequestParam("fu-id") Integer id,Model model,HttpSession session) {
+    private void sendRequest(Integer id, Model model, HttpSession session){
         Integer userId = (Integer) session.getAttribute("user");
         User userWithFriends = userService.getUserWithFriends(userId);
         userWithFriends.getFriends().add(userDAO.findUserById(id));
         userService.save(userWithFriends);
+        session.setAttribute("user",userWithFriends.getId());
+        model.addAttribute("user", userWithFriends);
+    }
+
+    @RequestMapping(value= "/sendRequestToFriend", method = RequestMethod.GET)
+    public String sendArequestToAFriend(@RequestParam("fu-id") Integer id,Model model,HttpSession session) {
+        sendRequest(id, model, session);
+        return "redirect:/mainPage";
+    }
+
+    @RequestMapping(value="/friendRequest",params="addToFriend",method=RequestMethod.GET)
+    public String addToFriend(@RequestParam("friendof-id") Integer id,Model model,HttpSession session) {
+        sendRequest(id, model, session);
+        return "redirect:/mainPage";
+    }
+
+    @RequestMapping(value="/friendRequest",params="deleteRequest",method=RequestMethod.GET)
+    public String deleteRequest(@RequestParam("friendof-id") Integer id,Model model,HttpSession session) {
+        User requestUserWithFriends = userService.getUserWithFriends(id);
+        Integer userId = (Integer) session.getAttribute("user");
+        User userWithFriends = userService.getUserWithFriends(userId);
+        requestUserWithFriends.getFriends().remove(userWithFriends);
+        userService.save(requestUserWithFriends);
         session.setAttribute("user",userWithFriends.getId());
         model.addAttribute("user", userWithFriends);
         return "redirect:/mainPage";

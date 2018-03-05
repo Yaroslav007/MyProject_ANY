@@ -33,7 +33,7 @@
         <ul class="clearfix" id="foundUs"> <!-- Built by JS -->
 
            <c:forEach items="${foundUsers}" var="fu">
-               <form action="/sendArequestToAFriend">
+               <form action="/sendRequestToFriend">
                    <li class="clearfix"><img class="found-user-foto float-l"  src="${fu.avatar}" alt=""><br>
                         <div class="float-l">
                             <p id="mtop-42">${fu.name}, ${fu.surname} </p>
