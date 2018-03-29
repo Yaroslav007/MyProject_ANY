@@ -80,7 +80,7 @@
                         <div class="form-group pd-bottom-40">
                           <label class="col-md-4 control-label">Mobile Number</label>
                           <div class="col-md-5">
-                            <input id="phone" name="phone" type="text" placeholder="+38-XXX-XXX-XXXX"
+                            <input id="phone" name="phone" type="text" placeholder="(+38) XXX XXX XXXX"
                              onkeyup="phonenumber()" class="form-control input-md" required="">
                           </div>
                         </div>

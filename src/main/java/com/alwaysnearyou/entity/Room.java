@@ -19,7 +19,7 @@ public class Room {
     private Integer id;
 
     private String name;
-    private Date rimeCreated;
+    private Date timeCreated;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "room_user",
@@ -30,4 +30,8 @@ public class Room {
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
     private List <Message> message;
 
+    public Room(String name, Date timeCreated) {
+        this.name = name;
+        this.timeCreated = timeCreated;
+    }
 }

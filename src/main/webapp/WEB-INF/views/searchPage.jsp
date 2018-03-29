@@ -24,7 +24,7 @@
 
 	 <div class="w-25 float-l bg-grey">
 	 </div>
-	 <div class="w-50 float-l">
+	 <div class="w-50 float-l searchOverflow">
         <div class="clearfix people-found bg-color-foundPeople">
             <img class="people-foto " src="/resources/image/people2.jpg"/>
             <p id="m-top-8" > Found people</p>
@@ -50,6 +50,12 @@
 	  </div>
 	 <div class="w-25 float-l bg-grey">
 	 </div>
+
+	  <div class="pidval text-align clearfix">
+         <br>
+         <br>
+         <p> The project was created with support by Okten Web University</p>
+     </div>
 	  <script type="text/javascript" src="/js/search.js"></script>
 </body>
 </html>

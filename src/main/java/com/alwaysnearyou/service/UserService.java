@@ -24,4 +24,6 @@ public interface UserService {
     List<User> findAllfriendsOff(int userId);
 
     User getUserWithFriends(int userId);
+
+    User findUserById(int userId);
 }

@@ -65,4 +65,9 @@ public class UserServiceImpl implements UserService{
         System.out.println("Found friendof" + user.getFriendOf());
         return  user;
     }
+
+    @Override
+    public User findUserById(int userId) {
+        return userDAO.findUserById(userId);
+    }
 }
