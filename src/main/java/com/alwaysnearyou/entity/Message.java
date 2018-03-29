@@ -1,9 +1,8 @@
 package com.alwaysnearyou.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -19,10 +18,17 @@ public class Message {
     private Integer id;
 
     private String textMessage;
-    private SimpleDateFormat time;
+    private Date time;
     private Integer user_id;
 
     @ManyToOne
     @JoinColumn(name = "message_roomId")
     private Room room;
+
+    public Message(String textMessage, Date time, Integer user_id, Room room) {
+        this.textMessage = textMessage;
+        this.time = time;
+        this.user_id = user_id;
+        this.room = room;
+    }
 }

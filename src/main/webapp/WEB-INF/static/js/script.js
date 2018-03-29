@@ -45,7 +45,7 @@ function checkEmail() {
 
 function phonenumber() {
   var phone = document.getElementById('phone');
-  var filter = /^\+?(([0-9]{2})[-. ])?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  var filter = /^\+?([0-9]{3})\)?[ ]?([0-9]{3})[ ]?([0-9]{4})$/;
   if(!filter.test(phone.value)) {
         phone.style.backgroundColor = "#ff6666";
         return false;

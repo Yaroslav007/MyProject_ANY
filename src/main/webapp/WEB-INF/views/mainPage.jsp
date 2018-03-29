@@ -22,6 +22,7 @@
        			   </form>
        			</div>
        	</div>
+
         <div>
             <div class=" w-25 left-box  float-l">
                 <div id="User-info">
@@ -35,15 +36,19 @@
                    <ul id="userlist"> <!-- Built by JS -->
 
                         <c:forEach items="${friends}" var="us">
-                           <li><img class="friend-foto radius"  src="${us.avatar}" alt="">${us.name} ${us.surname}</li>
+                           <li>
+                                <input id="user-id" type="hidden" name="user-id" value="${us.id}">
+                                <a href="user-${us.id}"><img class="friend-foto radius"  src="${us.avatar}" alt="">${us.name} ${us.surname}</a>
+                           </li>
                         </c:forEach>
                         <p><h4 id="requextStr">Request to be friends: </h4></p>
 
                        <c:forEach items="${friendof}" var="usOf">
                             <form action="/friendRequest">
-                                  <li class="clearfix pddVSborder"><img class="friend-foto radius clearfix"
-                                    src="${usOf.avatar}" alt="">${usOf.name} ${usOf.surname}
-                                    <input id="friendof-id" type="hidden" name="friendof-id" value="${usOf.id}">
+                                  <li class="clearfix pddVSborder">
+                                        <img class="friend-foto radius clearfix"
+                                        src="${usOf.avatar}" alt="">${usOf.name} ${usOf.surname}
+                                        <input id="friendof-id" type="hidden" name="friendof-id" value="${usOf.id}">
                                   <div class="clearfix marginVSheigth">
                                     <button class="requestAnsw"  type='submit' name="addToFriend"  value="AddToFriend">Add</button>
                                     <button class="requestAnsw"  type='submit' name="deleteRequest" value="DeleteRequest">Delete request</button></div>
@@ -55,15 +60,28 @@
                 </div>
             </div>
 
-            <div class="w-50 center-box  float-l">center-box
+            <div class="w-50 center-box  float-l">Room name: ${room.name}
                 <div id="chat_box " class="body-box">
                     <div id="chat">    <!-- Built by JS --> </div>
                     <div id="chatControls">
-                        <input id="message" placeholder="Write your message">
-                        <button id="send">Send</button>
+                         <form action="/sendMessage" method="post">
+                            <input id="room-id" type="hidden" name="room-id" value="${room.id}">
+                            <input id="textMessage" name="textMessage" placeholder="Write your message">
+                            <button id="send">Send</button>
+                         </form>
                     </div>
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
+
 
             <div class="w-25 right-box  float-l">
                 <div class="m-top-10 m-left-20">

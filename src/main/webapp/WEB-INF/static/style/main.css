@@ -90,11 +90,11 @@ li {
 }
 .w-25 {
     width: 25%;
-    height: 600px;
+    height: 800px;
 }
 .w-50 {
     width: 50%;
-    height: 600px;
+    height: 800px;
 }
 
 .left-box{
@@ -117,7 +117,6 @@ li {
 }
 
 #videoCall {
-
         text-align: center;
         float: center;
         width: 100px;
@@ -200,6 +199,7 @@ margin-top: 18px;
     margin-right: 2%;
 }
 
+
 #info_users{
 margin-top: 15px;
 font-size: 15px;
@@ -280,6 +280,11 @@ margin-right: 4%;
     margin-right: 4%;
 }
 
+.searchOverflow{
+    max-height: 750px;
+    overflow-y: auto;
+}
+
 
 
 
@@ -288,7 +293,7 @@ margin-right: 4%;
 
 #m-left-0{
    margin-left:0;
-   height: 520px;
+   height: 800px;
 }
 
 .button {
@@ -328,17 +333,21 @@ margin-right: 4%;
    font-size: 1.4em;
 }
 
+/* background-image: url("/resources/image/sety.jpg");
+     height: 100%;
+     width: 100% */
+
 .background-foto {
-   background-image: url("/resources/image/sety.jpg");
-   height: 100%;
-   width: 100%
+        height: 810px;
+       width: 100%;
+       background: #259cb1;
 }
 .background-foto-newAc{
    background-image: url('/resources/image/sety3.jpg');
-   height: 100%;
+   height: 950px;
    margin-top: -7px;
    width: 100%
-}
+ }
 .background-foto-confirm{
    background-image: url('/resources/image/fotoFON.jpg');
    height: 100%;
