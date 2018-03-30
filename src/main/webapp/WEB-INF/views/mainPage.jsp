@@ -66,21 +66,14 @@
                     <div id="chatControls">
                          <form action="/sendMessage" method="post">
                             <input id="room-id" type="hidden" name="room-id" value="${room.id}">
-                            <input id="textMessage" name="textMessage" placeholder="Write your message">
-                            <button id="send">Send</button>
+
+                            <textarea id="messagesTextArea" rows="10" cols="45"></textarea><br><br>
+                            <input id="textMessage" type="text" name="textMessage" placeholder="Write your message">
+                            <button id="send" value="send" onclick="sendMessage()">Send</button>
                          </form>
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
 
 
             <div class="w-25 right-box  float-l">
@@ -110,5 +103,6 @@
         </div>
 
         <script type="text/javascript" src="/js/search.js"></script>
+        <script type="text/javascript" src="/js/chatJS.js"></script>
 </body>
 </html>

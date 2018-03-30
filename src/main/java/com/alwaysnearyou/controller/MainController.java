@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -226,17 +226,17 @@ public class MainController {
         return "mainPage";
     }
 
-    @RequestMapping(value="/sendMessage",method=RequestMethod.POST)
-    public String sendMessage(@RequestParam("room-id") Integer id,@RequestParam String textMessage, ModelMap model,HttpSession session) {
-        Integer userId = (Integer) session.getAttribute("user");
-        Room room = roomService.findRoomById(id);
-//        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date=new Date();
-        Message message = new Message(textMessage,date,userId,room);
-        messageService.save(message);
-        modelMethod(session,model);
-        model.addAttribute("room",room);
-        return "mainPage";
-    }
+//    @RequestMapping(value="/sendMessage",method=RequestMethod.POST)
+//    public String sendMessage(@RequestParam("room-id") Integer id,@RequestParam String textMessage, ModelMap model,HttpSession session) {
+//        Integer userId = (Integer) session.getAttribute("user");
+//        Room room = roomService.findRoomById(id);
+////        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        Date date=new Date();
+//        Message message = new Message(textMessage,date,userId,room);
+//        messageService.save(message);
+//        modelMethod(session,model);
+//        model.addAttribute("room",room);
+//        return "mainPage";
+//    }
 
 }
