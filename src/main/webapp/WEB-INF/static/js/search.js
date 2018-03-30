@@ -10,4 +10,6 @@ function searchValidator() {
          fulName.style.backgroundColor = "#66cc66";
          button.disabled = false;
     }
+
+
 }

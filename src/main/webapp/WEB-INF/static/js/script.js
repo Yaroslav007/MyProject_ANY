@@ -66,8 +66,8 @@ function checkData() {
          birthday.style.backgroundColor = "#66cc66";
          return true;
     }
-}
 
+}
 
 
 
