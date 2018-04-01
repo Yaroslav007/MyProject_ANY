@@ -64,7 +64,7 @@
                 <div id="chat_box " class="body-box">
                     <div id="chat">    <!-- Built by JS --> </div>
                     <div id="chatControls">
-                         <form action="/sendMessage" method="post">
+                         <form onsubmit="sendMessage()">
                             <input id="room-id" type="hidden" name="room-id" value="${room.id}">
 
                             <textarea id="messagesTextArea" rows="10" cols="45"></textarea><br><br>
@@ -74,7 +74,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="w-25 right-box  float-l">
                 <div class="m-top-10 m-left-20">

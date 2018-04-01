@@ -2,10 +2,8 @@ package com.alwaysnearyou.controller;
 
 import com.alwaysnearyou.dao.UserDAO;
 import com.alwaysnearyou.entity.User;
-import com.alwaysnearyou.service.MessageService;
 import com.alwaysnearyou.service.UserService;
 import com.alwaysnearyou.service.impl.MailServiceImpl;
-import com.alwaysnearyou.service.impl.RoomServiceImpl;
 import com.alwaysnearyou.utils.RandomCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,12 +25,6 @@ public class LoginController {
 
     @Autowired
     private UserDAO userDAO;
-
-    @Autowired
-    private RoomServiceImpl roomService;
-
-    @Autowired
-    private MessageService messageService;
 
     @Autowired
     private MailServiceImpl mailService;

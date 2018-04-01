@@ -1,14 +1,13 @@
 package com.alwaysnearyou.controller;
 
-import com.alwaysnearyou.dao.UserDAO;
+import com.alwaysnearyou.entity.Room;
 import com.alwaysnearyou.entity.User;
-import com.alwaysnearyou.service.MessageService;
 import com.alwaysnearyou.service.UserService;
-import com.alwaysnearyou.service.impl.MailServiceImpl;
 import com.alwaysnearyou.service.impl.RoomServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,16 +21,7 @@ public class MainController {
     private UserService userService;
 
     @Autowired
-    private UserDAO userDAO;
-
-    @Autowired
     private RoomServiceImpl roomService;
-
-    @Autowired
-    private MessageService messageService;
-
-    @Autowired
-    private MailServiceImpl mailService;
 
     private void modelMethod(HttpSession session, ModelMap model){
         Integer userId = (Integer) session.getAttribute("user");
@@ -48,6 +38,22 @@ public class MainController {
     public String mainPage(ModelMap model, HttpSession session) {
         //TODO: redirect to login page
         modelMethod(session, model);
+        return "mainPage";
+    }
+
+    @RequestMapping(value="/user-{id}",method=RequestMethod.GET)
+    public String room(@PathVariable int id, ModelMap model, HttpSession session) {
+        Integer userId = (Integer) session.getAttribute("user");
+        User currentUser = userService.getUserWithFriends(userId);
+        User user = userService.findUserById(id);
+        String str1 = currentUser.getEmail();
+        String str2 = user.getEmail();
+        Room room = roomService.findRoom(str1);
+        if (room==null){
+            room = roomService.findRoom(str2);
+        }
+        modelMethod(session,model);
+        model.addAttribute("room",room);
         return "mainPage";
     }
 }
