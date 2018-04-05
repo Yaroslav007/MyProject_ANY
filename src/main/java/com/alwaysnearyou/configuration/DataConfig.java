@@ -21,6 +21,9 @@ import java.util.Properties;
 @EnableJpaRepositories("com.alwaysnearyou.dao")
 public class  DataConfig {
 
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "2731";
+
     @Bean
     public MultipartResolver multipartResolver() {
         return new StandardServletMultipartResolver();
@@ -30,8 +33,8 @@ public class  DataConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setUrl("jdbc:mysql://localhost:3306/AP_ANY");
-        dataSource.setUsername("root");
-        dataSource.setPassword("2731");
+        dataSource.setUsername(USERNAME);
+        dataSource.setPassword(PASSWORD);
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         return dataSource;
     }
@@ -39,7 +42,7 @@ public class  DataConfig {
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setShowSql(true);
+//        vendorAdapter.setShowSql(true);
         vendorAdapter.setDatabase(Database.MYSQL);
         return vendorAdapter;
     }

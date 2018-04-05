@@ -1,66 +1,52 @@
-//var webSocket = new WebSocket("ws://localhost:8080/mainPage");
-//webSocket.Onmessage = function processMessage(message){
-//    var jsonData = Json.parse(message.data);
-//    if(jsonData.message !=null messageTextArea.value +=jsonData.message + "\n";
-//}
-//
-//function sendMessage(){
-////    json = {};
-////    json.id = room-id.value;
-////    json.message = textMessage.value;
-////    webSocket.send(JSON.stringify(json));
-//
-//webSocket.send(textMessage.value);
-//textMessage.value="";
-//}
-
-  var messagesTextArea = document.getElementById("messagesTextArea");
-  var textMessage = document.getElementById("textMessage");
-  var webSocket = new WebSocket("ws:/http://localhost:8080/chat");
-   webSocket.Onopen = function Message(){processOpen(message);};
-
-   webSocket.Onmessage = function Message(){processMessage(message);};
-
-   webSocket.Onclose = function Message(){processClose(message);};
-
-   webSocket.Onerror = function Message(){processError(message);};
+var messagesTextArea = document.getElementById("messagesTextArea");
+var textMessage = document.getElementById("textMessage");
+var webSocket = new WebSocket("ws://localhost:8080/chat");
+webSocket.onopen = function (message){processOpen(message);};
+webSocket.onmessage = function (message){processMessage(message);};
+webSocket.onclose = function (message){processClose(message);};
+webSocket.onerror = function (message){processError(message);};
 
 
  function processOpen(message){
-    messagesTextArea.value +="server Connected....."+"\n";
+    messagesTextArea.value += "server Connected....." + "\n";
  }
 
  function processMessage(message){
-    messagesTextArea.value +="Receive from server....."+message.data+"\n";
+    messagesTextArea.value += "Receive from server....." + message.data + "\n";
  }
 
  function processClose(message){
      webSocket.send("client disconnected");
-     messagesTextArea.value +="server DISConnected....."+"\n";
+     messagesTextArea.value += "server DISConnected....." + "\n";
  }
 
   function sendMessage(){
-    console.log("enter");
-
-     if(textMessage.value!=="close"){
-         alert(textMessage.value);
-          webSocket.send(textMessage.value);
-
-          alert("2");
-          messagesTextArea.value +="send to server....."+textMessage.value()+"\n";
-         alert("3");
-        textMessage.value="";
-       alert("4");
+     if(textMessage.value !== "close") {
+        webSocket.send(textMessage.value);
+        messagesTextArea.value += "send to server....." + textMessage.value() + "\n";
+        textMessage.value = "";
+     } else {
+        alert("else message");
+        webSocket.close();
      }
-     else{
-            alert("else message");
-            webSocket.close();
-     }
-
   }
 
  function processError(message){
      webSocket.send("client disconnected");
-     messagesTextArea.value +="error....."+"\n";
+     messagesTextArea.value += "error....." + "\n";
+ }
 
+
+ function searchValidator() {
+   var fulName = document.getElementById('search');
+   var filter = /^[a-zA-Z``''0-9-]+ [a-zA-Z``''0-9-]+$/;
+   var button = document.getElementById("search-submit");
+   if (!filter.test(fulName.value)) {
+      fulName.focus;
+      fulName.style.backgroundColor = "#ff6666";
+       button.disabled = true;
+   }else{
+       fulName.style.backgroundColor = "#66cc66";
+       button.disabled = false;
+   }
  }

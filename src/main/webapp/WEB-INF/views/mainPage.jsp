@@ -15,7 +15,7 @@
                <div>
                    <img class="foto-size-chat radius" src="/resources/image/3.png"/>
                    <p id="m-top-8" >Be always on connection with the "Always near you" application!</p>
-       		       <form class="form-wrapper" action="/search">
+       		       <form class="form-wrapper" action="/search" >
                         <input type="submit" value="go" id="search-submit">
                         <input id="search" name="search" type="text" onkeyup="searchValidator()"
                         placeholder="${user.name} ${user.surname}" required="">
@@ -64,36 +64,40 @@
                 <div id="chat_box " class="body-box">
                     <div id="chat">    <!-- Built by JS --> </div>
                     <div id="chatControls">
-                         <form action="/sendMessage" method="post">
+                         <form onsubmit="sendMessage()">
                             <input id="room-id" type="hidden" name="room-id" value="${room.id}">
-
-                            <textarea id="messagesTextArea" rows="10" cols="45"></textarea><br><br>
-                            <input id="textMessage" type="text" name="textMessage" placeholder="Write your message">
+                               <div id="area">
+                                 <textarea id="messagesTextArea" readonly="readonly" name="messagesTextArea" rows="10" cols="45"></textarea><br><br>
+                               </div>
+                            <input id="textMessage" type="text" name="textMessage" onkeyup="textMessage()" placeholder="Write your message">
                             <button id="send" value="send" onclick="sendMessage()">Send</button>
                          </form>
                     </div>
                 </div>
             </div>
 
-
             <div class="w-25 right-box  float-l">
-                <div class="m-top-10 m-left-20">
+                <div class="m-top-10 m-left-0">
                     <span class="margin">Create the video call</span>
                     <button id="videoCall"  class="float-left button2 ">Video call</button>
                 </div>
-                <div class="m-top-20 m-left-20">
-                    <span class="margin">Add new Friend</span>
-                    <button id="videoCall" class="button2 "> Add</button>
-                </div>
 
-                <div class="m-top-20 m-left-20">
+                <div class="m-top-20 m-left-0">
                     <span class="margin">Remove freind</span>
                     <button id="videoCall" class="button2"> Remove</button>
                 </div>
-                <div class="m-top-20 m-left-20">
-                    <span class="margin">Delete all message from room</span>
+
+                <div class="m-top-20 m-left-0">
+                    <span class="margin">Delete all message<br> from room</span>
                     <button id="videoCall" class="button2"> Delete</button>
                 </div>
+                <p class="m-top-20 border-top"></p>
+                <form action="/signOut">
+                    <div class="m-top-20 m-left-0">
+                        <span class="margin">Exit</span>
+                        <button id="videoCall" class="button2 "> Sign out</button>
+                    </div>
+                </form>
             </div>
        </div>
         <div class="pidval text-align clearfix">
@@ -102,7 +106,6 @@
             <p> The project was created with support by Okten Web University</p>
         </div>
 
-        <script type="text/javascript" src="/js/search.js"></script>
         <script type="text/javascript" src="/js/chatJS.js"></script>
 </body>
 </html>

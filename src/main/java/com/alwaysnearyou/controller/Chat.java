@@ -1,30 +1,34 @@
 package com.alwaysnearyou.controller;
 
 
+import com.alwaysnearyou.service.RoomService;
+import com.alwaysnearyou.service.UserService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonWriter;
-import javax.websocket.OnClose;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.Session;
+import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.io.StringWriter;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 @ServerEndpoint("/chat")
 public class Chat {
-//    static Map<Integer,Session> sessionMap = Collections.synchronizedMap(new HashMap<Integer,Session>());
+
     static Set<Session> chatroomUsers = Collections.synchronizedSet( new HashSet<Session>());
 
-//    private static ObjectMapper mapper = new ObjectMapper();
+    private static ObjectMapper mapper = new ObjectMapper();
 
-//    @Autowired
-//    private RoomService roomService;
-//
-//    @Autowired
-//    private UserService userService;
+    @Autowired
+    private RoomService roomService;
+
+    @Autowired
+    private UserService userService;
 
     @OnOpen
     public void handleOpen(Session userSession){
@@ -34,10 +38,12 @@ public class Chat {
 //        String str = userById.getName() + " " + userById.getSurname();
 //        userSession.getUserProperties().put("fullname",str);
 //        sessionMap.put(userId,userSession);
+
+        System.out.println("Connectin is created");
     }
 
     @OnMessage
-    public String  handleMessage(String message, Session userSession) throws IOException {
+    public void   handleMessage(String message, Session userSession) throws IOException {
 //        String[] subStr;
 //        String delimeter = "\\\"";
 //        subStr = message.split(delimeter);
@@ -67,10 +73,9 @@ public class Chat {
 //        }
 
 
-        System.out.print("message from Client = "+message);
-        String replyMessage = "echo"+message;
-        System.out.print("message send to Client = "+replyMessage);
-        return replyMessage;
+        System.out.print("message from Client = " + message);
+        String replyMessage = "echo" + message;
+        System.out.print("message send to Client = " + replyMessage);
     }
 
     @OnClose
@@ -78,7 +83,12 @@ public class Chat {
 //        Integer userId = (Integer) session.getAttribute("user");
 //        sessionMap.remove(userId);
         chatroomUsers.remove(userSession);
+
+        System.out.println("Connection is closed");
     }
+
+    @OnError
+    public void onError(Session session, Throwable thr) {}
 
     private String buildJsonData(String username, String message)  {
 //        throws JsonProcessingException

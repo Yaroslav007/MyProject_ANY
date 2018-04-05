@@ -27,13 +27,13 @@
         <div id="panelka" class="col-xs-6 col-md-3">
             <div class="panel panel-primary">
                 <div class="panel-body">
-                    <form method="POST" action="logIn" role="form">
+                    <form method="POST" action="logIn" role="form" onsubmit="return validateForm()">
                         <div class="form-group">
                             <h2>Sign in</h2>
                         </div>
                         <div class="form-group">
                             <strong>Email</strong>
-                            <input id="signinEmail" name="signinEmail" type="text" maxlength="50" class="form-control">
+                            <input id="signinEmail" name="signinEmail" type="text" maxlength="50" class="form-control" >
                         </div>
                         <div class="form-group">
                             <strong>Password</strong>
@@ -47,7 +47,7 @@
                         </div>
                             <p class="form-group"><a href="new" class="btn btn-info btn-block">Create new account</a></p>
                             <p class="form-group text-align-center">By clicking <a href="new">"Create new account"</a> , you agree to our terms
-                            of service and privacy privacy policy.We’ll occasionally send you account related emails.</p>
+                            of service and privacy privacy policy.We will occasionally send you account related emails.</p>
                     </form>
                 </div>
             </div>
@@ -62,5 +62,15 @@
 	</div>
 
 
+     <script>
+        function validateForm() {
+           var x = document.getElementById('signinEmail').value;
+           var x1 = document.getElementById('signinPassword').value;
+           if (x == "" ||  x1 == "") {
+             alert("Email and Password must be filled out");
+             return false;
+           }
+        }
+     </script>
 </body>
 </html>

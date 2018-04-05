@@ -49,16 +49,6 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
         return mailSender;
     }
 
-    @Bean(name = "HelloWorld")
-    public ViewResolver viewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setViewClass(JstlView.class);
-        viewResolver.setPrefix("/WEB-INF/views/");
-        viewResolver.setSuffix(".jsp");
-
-        return viewResolver;
-    }
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry.addResourceHandler("/css/**")
@@ -66,9 +56,16 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/resources/**")
                 .addResourceLocations("/resources/");
         registry.addResourceHandler("/userAvatar/**")
-                .addResourceLocations("file:"+System.getProperty("user.home")+ File.separator +"Avatars\\");
+                .addResourceLocations("file:"+ System.getProperty("user.home") + File.separator + "Avatars\\");
         registry.addResourceHandler("/js/**")
                 .addResourceLocations("/WEB-INF/static/js/");
+    }
 
+    @Bean(name = "viewResolver")
+    public InternalResourceViewResolver getViewResolver() {
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix("/WEB-INF/views/");
+        viewResolver.setSuffix(".jsp");
+        return viewResolver;
     }
 }
