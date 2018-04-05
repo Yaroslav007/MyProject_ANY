@@ -81,8 +81,7 @@ public class LoginController {
             model.addAttribute("user", user);
             return "redirect:/mainPage";
         } else {
-            System.out.println("ERRRRROOOOOORR");
-            return null;
+            return "errorConfirm";
         }
     }
 
@@ -101,5 +100,11 @@ public class LoginController {
     @RequestMapping(value= "/logIn", method = RequestMethod.GET)
     public String logIn(){
         return "login";
+    }
+
+    @RequestMapping(value= "/signOut", method = RequestMethod.GET)
+    public String signOut( HttpSession session){
+        session.invalidate();
+        return "redirect:/login";
     }
 }

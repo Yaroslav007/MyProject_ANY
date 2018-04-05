@@ -1,10 +1,10 @@
 var messagesTextArea = document.getElementById("messagesTextArea");
 var textMessage = document.getElementById("textMessage");
-var webSocket = new WebSocket("http://localhost:8080/chat");
-webSocket.onopen = function Message(){processOpen(message);};
-webSocket.onmessage = function Message(){processMessage(message);};
-webSocket.onclose = function Message(){processClose(message);};
-webSocket.onerror = function Message(){processError(message);};
+var webSocket = new WebSocket("ws://localhost:8080/chat");
+webSocket.onopen = function (message){processOpen(message);};
+webSocket.onmessage = function (message){processMessage(message);};
+webSocket.onclose = function (message){processClose(message);};
+webSocket.onerror = function (message){processError(message);};
 
 
  function processOpen(message){
@@ -34,5 +34,19 @@ webSocket.onerror = function Message(){processError(message);};
  function processError(message){
      webSocket.send("client disconnected");
      messagesTextArea.value += "error....." + "\n";
+ }
 
+
+ function searchValidator() {
+   var fulName = document.getElementById('search');
+   var filter = /^[a-zA-Z``''0-9-]+ [a-zA-Z``''0-9-]+$/;
+   var button = document.getElementById("search-submit");
+   if (!filter.test(fulName.value)) {
+      fulName.focus;
+      fulName.style.backgroundColor = "#ff6666";
+       button.disabled = true;
+   }else{
+       fulName.style.backgroundColor = "#66cc66";
+       button.disabled = false;
+   }
  }

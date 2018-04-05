@@ -40,6 +40,8 @@ public class MainController {
         modelMethod(session, model);
         return "mainPage";
     }
+//    @RequestMapping(value="/user-{id}",method=RequestMethod.GET)
+//    public String room(@PathVariable int id, ModelMap model, HttpSession session) {
 
     @RequestMapping(value="/user-{id}",method=RequestMethod.GET)
     public String room(@PathVariable int id, ModelMap model, HttpSession session) {

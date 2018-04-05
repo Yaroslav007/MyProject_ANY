@@ -42,6 +42,9 @@ public class FriendsController {
             User userWithFriends = userService.getUserWithFriends(userId);
             List<User> friends = userWithFriends.getFriends();
             foundUser.removeAll(friends);
+            if(foundUser.contains(userWithFriends)){
+                foundUser.remove(userWithFriends);
+            }
             if (foundUser.size()==0){
                 return "errorSingnIn";
             }else {

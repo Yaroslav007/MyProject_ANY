@@ -11,9 +11,13 @@
 .body-box {
     font-family: monospace;
     font-size: 14px;
-    max-width: 480px;   ----
     margin: 0 auto;
     padding: 20px;
+}
+
+#messagesTextArea{
+   width: 100%;
+   height: 95%;
 }
 
 #body_id{
@@ -76,7 +80,9 @@ li {
     border-left-color: #74a377;
     animation: enter .2s 1;
 }
+#area{
 
+}
 @keyframes enter {
     from { transform: none;        }
     50%  { transform: scale(1.05); }
@@ -140,8 +146,8 @@ li {
     margin-top: 40px;
 }
 
-.m-left-20{
-    margin-left: 3%;
+.m-left-0{
+    margin-left: 0%;
 }
 
 #User-info{
